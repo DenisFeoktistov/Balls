@@ -1,7 +1,7 @@
 import pygame
 
 from MainWindow.MainWindowClasses.Field.Field import Field
-from Settings import Settings
+from MainWindow.MainWindowClasses.Settings.Settings import Settings
 
 
 class MainWindow:
