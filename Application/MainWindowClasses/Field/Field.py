@@ -6,6 +6,15 @@ from Application.MainWindowClasses.Field.FieldClasses.Ball import Ball
 
 
 class Field:
+    RADIUS_MIN = 5
+    RADIUS_MAX = 100
+
+    SPEED_MIN = 1
+    SPEED_MAX = 30
+
+    COUNT_MIN = 1
+    COUNT_MAX = 30
+
     def __init__(self, window, x, y, width, height, line_width, count_of_balls):
         self.window = window
 
@@ -39,12 +48,24 @@ class Field:
     def add_balls(self):
         self.balls = pygame.sprite.Group()
 
-        for _ in range(self.count_of_balls):
-            radius = randint(15, 30)
-            x = randint(self.x + 1, self.x + self.width - 2 * radius - 1)
-            y = randint(self.y + 1, self.y + self.height - 2 * radius - 1)
-            vx = randint(-5, 5)
-            vy = randint(-5, 5)
+        number_of_balls = Field.COUNT_MIN + (Field.COUNT_MAX - Field.COUNT_MIN) * \
+                          self.window.settings.parameters_widgets["count"].get_value() // 100
+
+        for _ in range(number_of_balls):
+            radius_val = Field.RADIUS_MIN + (Field.RADIUS_MAX - Field.RADIUS_MIN) * \
+                         self.window.settings.parameters_widgets["size"].get_value() // 100
+            radius = randint(Field.RADIUS_MIN, radius_val)
+
+            delta_per = self.window.settings.parameters_widgets["cor. delta"].get_value()
+            x_val = (self.width // 2 - radius - 1) * delta_per // 100
+            y_val = (self.height // 2 - radius - 1) * delta_per // 100
+            x = randint(self.x + self.width // 2 - x_val, self.x + self.width // 2 + x_val)
+            y = randint(self.y + self.height // 2 - y_val, self.y + self.height // 2 + y_val)
+
+            speed_val = Field.SPEED_MIN + (Field.SPEED_MAX - Field.SPEED_MIN) * \
+                        self.window.settings.parameters_widgets["speed"].get_value() // 100
+            vx = randint(-speed_val, speed_val)
+            vy = randint(-speed_val, speed_val)
             self.balls.add(Ball(x, y, vx, vy, radius, self))
 
     def handle(self, event):

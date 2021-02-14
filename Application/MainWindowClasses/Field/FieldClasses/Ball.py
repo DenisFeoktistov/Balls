@@ -10,7 +10,8 @@ class Ball(pygame.sprite.Sprite):
                                     pygame.SRCALPHA, 32)
         pygame.draw.circle(self.image, pygame.Color("red"),
                            (radius, radius), radius)
-        self.rect = pygame.Rect(x, y, 2 * radius, 2 * radius)
+        self.rect = pygame.Rect(0, 0, 2 * radius, 2 * radius)
+        self.rect.center = x, y
         self.vx = vx
         self.vy = vy
 
