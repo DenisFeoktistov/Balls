@@ -18,6 +18,9 @@ class Field:
 
         self.generate_components()
 
+    def restart(self):
+        self.generate_components()
+
     def generate_components(self):
         self.add_borders()
         self.add_balls()
