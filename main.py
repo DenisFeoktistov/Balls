@@ -1,7 +1,7 @@
 import pygame
 
 
-from MainWindow import MainWindow
+from MainWindow.MainWindow import MainWindow
 
 
 class App:

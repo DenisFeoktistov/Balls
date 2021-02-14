@@ -1,8 +1,8 @@
 import pygame
 from random import randint
 
-from Border import Border
-from Ball import Ball
+from MainWindow.MainWindowClasses.Field.FieldClasses.Border import Border
+from MainWindow.MainWindowClasses.Field.FieldClasses.Ball import Ball
 
 
 class Field:
