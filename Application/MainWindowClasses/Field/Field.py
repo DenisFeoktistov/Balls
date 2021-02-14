@@ -10,7 +10,7 @@ class Field:
     RADIUS_MAX = 100
 
     SPEED_MIN = 1
-    SPEED_MAX = 30
+    SPEED_MAX = 20
 
     COUNT_MIN = 1
     COUNT_MAX = 30
