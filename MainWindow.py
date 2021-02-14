@@ -19,9 +19,10 @@ class MainWindow:
         self.screen = pygame.display.set_mode(MainWindow.SIZE)
         self.time = pygame.time.Clock()
 
+        count_of_balls = 10
         self.field = Field(window=self, x=MainWindow.FIELD_X, y=MainWindow.FIELD_Y, width=MainWindow.FIELD_WIDTH,
                            height=MainWindow.FIELD_HEIGHT,
-                           line_width=MainWindow.FIELD_LINE_WIDTH)
+                           line_width=MainWindow.FIELD_LINE_WIDTH, count_of_balls=count_of_balls)
         self.settings = Settings(self)
 
     def show(self):
